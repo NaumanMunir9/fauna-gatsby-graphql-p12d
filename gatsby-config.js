@@ -6,5 +6,12 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [],
-}
+  plugins: [
+    {
+      resolve: "gatsby-plugin-apollo",
+      options: {
+        uri: "http://localhost:8888/.netlify/functions/bookmarks",
+      },
+    },
+  ],
+};

@@ -1,4 +1,3 @@
-// libraries
 const { ApolloServer, gql } = require("apollo-server-lambda");
 
 const typeDefs = gql`
@@ -32,7 +31,9 @@ const bookmarks = [
 
 const resolvers = {
   Query: {
-    bookmark: () => bookmarks,
+    bookmark: (root, args, context) => {
+      return bookmarks;
+    },
   },
 };
 
