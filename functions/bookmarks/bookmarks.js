@@ -49,7 +49,7 @@ const resolvers = {
             q.Lambda((x) => q.Get(x))
           )
         );
-        return result.data.map((item) => {
+        return result.data.map((d) => {
           return {
             id: d.ts,
             url: d.data.url,

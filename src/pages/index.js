@@ -37,6 +37,7 @@ export default function Home() {
         url: inputUrl,
         desc: inputDesc,
       },
+      refetchQueries: [{ query: BookmarkQuery }],
     });
   };
 
