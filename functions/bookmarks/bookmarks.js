@@ -9,6 +9,9 @@ const typeDefs = gql`
     url: String!
     desc: String!
   }
+  type Mutation {
+    addBookmark(url: String!, desc: String!): Bookmark
+  }
 `;
 
 const bookmarks = [
@@ -33,6 +36,11 @@ const resolvers = {
   Query: {
     bookmark: (root, args, context) => {
       return bookmarks;
+    },
+  },
+  Mutation: {
+    addBookmark: (root, { url, desc }, context) => {
+      console.log(`URL: ${url} || DESC: ${desc}`);
     },
   },
 };
