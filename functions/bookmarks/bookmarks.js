@@ -1,4 +1,8 @@
+// libraries
 const { ApolloServer, gql } = require("apollo-server-lambda");
+const faunadb = require("faunadb"),
+  q = faunadb.query;
+require("dotenv").config();
 
 const typeDefs = gql`
   type Query {
@@ -34,13 +38,50 @@ const bookmarks = [
 
 const resolvers = {
   Query: {
-    bookmark: (root, args, context) => {
-      return bookmarks;
+    bookmark: async (root, args, context) => {
+      try {
+        const client = new faunadb.Client({
+          secret: process.env.FAUNADB_SECRET_API_KEY,
+        });
+        const result = await client.query(
+          q.Map(
+            q.Paginate(q.Match(q.Index("url"))),
+            q.Lambda((x) => q.Get(x))
+          )
+        );
+        return result.data.map((item) => {
+          return {
+            id: d.ts,
+            url: d.data.url,
+            desc: d.data.desc,
+          };
+        });
+      } catch (error) {
+        console.error(`Error: ${error}`);
+      }
     },
   },
   Mutation: {
-    addBookmark: (root, { url, desc }, context) => {
-      console.log(`URL: ${url} || DESC: ${desc}`);
+    addBookmark: async (root, { url, desc }, context) => {
+      const client = new faunadb.Client({
+        secret: process.env.FAUNADB_SECRET_API_KEY,
+      });
+      try {
+        const result = await client.query(
+          q.Create(q.Collection("links"), {
+            data: {
+              url,
+              desc,
+            },
+          })
+        );
+        console.log(
+          `Document Created and Inserted in Container ${result.ref.id}`
+        );
+        return result.ref.data;
+      } catch (error) {
+        console.error(`Error: ${error}`);
+      }
     },
   },
 };
