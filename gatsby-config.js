@@ -7,12 +7,12 @@
 module.exports = {
   /* Your site config here */
   plugins: [
-    {
-      resolve: "gatsby-plugin-apollo",
-      options: {
-        uri: "https://mnm-p12d.netlify.app/",
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-apollo",
+    //   options: {
+    //     uri: "https://mnm-p12d.netlify.app/",
+    //   },
+    // },
     `gatsby-plugin-material-ui`,
   ],
 };
