@@ -6,7 +6,7 @@ import { CssBaseline, Container, Typography } from "@material-ui/core";
 
 // styles
 import "./index.css";
-import InputData from "../components/InputData";
+import InputForm from "../components/InputForm";
 import BookmarkData from "../components/BookmarkData";
 
 const BookmarkQuery = gql`
@@ -55,11 +55,9 @@ export default function Home() {
       <CssBaseline />
       <Container maxWidth="md">
         <Typography component="div" style={{ backgroundColor: "#f5f5f5" }}>
-          <div>
-            <BookmarkData data={data} />
-          </div>
+          <BookmarkData data={data} />
 
-          <InputData
+          <InputForm
             inputUrl={inputUrl}
             inputDesc={inputDesc}
             setInputUrl={setInputUrl}
