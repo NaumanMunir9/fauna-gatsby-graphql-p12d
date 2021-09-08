@@ -32,7 +32,7 @@ export default function BookmarkData({ data }) {
             <ListItem alignItems="flex-start">
               <ListItemText
                 fullWidth="true"
-                primary={item.desc}
+                primary={`Description: ${item.desc}`}
                 secondary={
                   <>
                     <Typography
@@ -41,7 +41,7 @@ export default function BookmarkData({ data }) {
                       className={classes.inline}
                       color="textPrimary"
                     >
-                      Url:
+                      URL:{" "}
                     </Typography>
                     {item.url}
                   </>
