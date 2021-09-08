@@ -1,14 +1,55 @@
+// libraries
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Typography,
+  ListItemText,
+  Divider,
+  ListItem,
+  List,
+} from "@material-ui/core";
+
+// material-ui styles
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    maxWidth: "100%",
+    backgroundColor: theme.palette.background.paper,
+  },
+  inline: {
+    display: "inline",
+  },
+}));
 
 export default function BookmarkData({ data }) {
+  const classes = useStyles();
+
   return (
     <>
       {data &&
         data.bookmark.map((item) => (
-          <div key={item.id}>
-            <h2>{item.url}</h2>
-            <h2>{item.desc}</h2>
-          </div>
+          <List key={item.id} className={classes.root}>
+            <ListItem alignItems="flex-start">
+              <ListItemText
+                fullWidth="true"
+                primary={item.desc}
+                secondary={
+                  <>
+                    <Typography
+                      component="span"
+                      variant="body2"
+                      className={classes.inline}
+                      color="textPrimary"
+                    >
+                      Url:
+                    </Typography>
+                    {item.url}
+                  </>
+                }
+              />
+            </ListItem>
+            <Divider variant="middle" component="li" />
+          </List>
         ))}
     </>
   );

@@ -2,12 +2,14 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import gql from "graphql-tag";
-import { CssBaseline, Container, Typography } from "@material-ui/core";
+import { Container, Typography } from "@material-ui/core";
+
+// components
+import BookmarkData from "../components/BookmarkData";
+import InputForm from "../components/InputForm";
 
 // styles
 import "./index.css";
-import InputForm from "../components/InputForm";
-import BookmarkData from "../components/BookmarkData";
 
 const BookmarkQuery = gql`
   query {
@@ -52,9 +54,8 @@ export default function Home() {
 
   return (
     <>
-      <CssBaseline />
-      <Container maxWidth="md">
-        <Typography component="div" style={{ backgroundColor: "#f5f5f5" }}>
+      <Container maxWidth="md" style={{ paddingTop: "20px", margin: "auto" }}>
+        <Typography component="div">
           <BookmarkData data={data} />
 
           <InputForm
