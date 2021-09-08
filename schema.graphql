@@ -1,9 +1,0 @@
-type Bookmark {
-  id: ID!
-  url: String!
-  desc: String!
-}
-
-type Query {
-  bookmark: [Bookmark!]!
-}

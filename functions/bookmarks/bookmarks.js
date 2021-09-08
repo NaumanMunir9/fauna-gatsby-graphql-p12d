@@ -1,8 +1,8 @@
 // libraries
+require("dotenv").config();
 const { ApolloServer, gql } = require("apollo-server-lambda");
 const faunadb = require("faunadb"),
   q = faunadb.query;
-require("dotenv").config();
 
 const typeDefs = gql`
   type Query {
@@ -17,24 +17,6 @@ const typeDefs = gql`
     addBookmark(url: String!, desc: String!): Bookmark
   }
 `;
-
-const bookmarks = [
-  {
-    id: 1,
-    url: "https://www.udemy.com/course/react-redux/",
-    desc: "Master React and Redux with React Router, Webpack, and Create-React-App. Includes Hooks!",
-  },
-  {
-    id: 2,
-    url: "https://www.udemy.com/course/react-and-typescript-build-a-portfolio-project/",
-    desc: "Expand your portfolio of projects by building a complex app with the latest web technologies.",
-  },
-  {
-    id: 3,
-    url: "https://www.udemy.com/course/graphql-with-react-course/",
-    desc: "Learn and master GraphQL by building real web apps with React and Node",
-  },
-];
 
 const resolvers = {
   Query: {

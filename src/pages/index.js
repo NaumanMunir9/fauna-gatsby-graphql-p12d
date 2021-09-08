@@ -11,6 +11,7 @@ import InputForm from "../components/InputForm";
 // styles
 import "./index.css";
 
+// graphql query
 const BookmarkQuery = gql`
   query {
     bookmark {
@@ -21,6 +22,7 @@ const BookmarkQuery = gql`
   }
 `;
 
+// graphql mutation
 const AddBookmarkMutation = gql`
   mutation addBookmark($url: String!, $desc: String!) {
     addBookmark(url: $url, desc: $desc) {
