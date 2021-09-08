@@ -23,7 +23,7 @@ export default function InputData({
             onChange={(e) => setInputUrl(e.target.value)}
             label="Enter URL"
             variant="outlined"
-            fullWidth="true"
+            fullWidth={true}
           />
         </Grid>
         <Grid item xs={6}>
@@ -34,7 +34,7 @@ export default function InputData({
             onChange={(e) => setInputDesc(e.target.value)}
             label="Enter Description"
             variant="outlined"
-            fullWidth="true"
+            fullWidth={true}
           />
         </Grid>
         <Grid item xs={12}>

@@ -9,7 +9,7 @@ export default function ButtonSubmit({ addBookmarkSubmit }) {
         onClick={addBookmarkSubmit}
         variant="contained"
         color="primary"
-        fullWidth="true"
+        fullWidth={true}
       >
         Add Bookmark
       </Button>

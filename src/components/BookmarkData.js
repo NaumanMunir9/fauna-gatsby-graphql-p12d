@@ -31,7 +31,6 @@ export default function BookmarkData({ data }) {
           <List key={item.id} className={classes.root}>
             <ListItem alignItems="flex-start">
               <ListItemText
-                fullWidth="true"
                 primary={`Description: ${item.desc}`}
                 secondary={
                   <>

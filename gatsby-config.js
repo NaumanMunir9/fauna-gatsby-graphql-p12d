@@ -13,5 +13,6 @@ module.exports = {
         uri: "http://localhost:8888/.netlify/functions/bookmarks",
       },
     },
+    `gatsby-plugin-material-ui`,
   ],
 };
