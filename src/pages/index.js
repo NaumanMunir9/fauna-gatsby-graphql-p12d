@@ -10,7 +10,10 @@ import {
   Grid,
   TextField,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+
+// styles
+import "./index.css";
+import InputData from "../components/InputData";
 
 const BookmarkQuery = gql`
   query {
@@ -32,19 +35,7 @@ const AddBookmarkMutation = gql`
   }
 `;
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  },
-}));
-
 export default function Home() {
-  const classes = useStyles();
   const [inputUrl, setInputUrl] = useState("");
   const [inputDesc, setInputDesc] = useState("");
 
@@ -80,42 +71,13 @@ export default function Home() {
               ))}
           </div>
 
-          <>
-            <Grid container spacing={3}>
-              <Grid item xs={6}>
-                <TextField
-                  id="outlined-basic"
-                  placeholder="Enter URL"
-                  value={inputUrl}
-                  onChange={(e) => setInputUrl(e.target.value)}
-                  label="Enter URL"
-                  variant="outlined"
-                  fullWidth="true"
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <TextField
-                  id="outlined-basic"
-                  placeholder="Enter Description"
-                  value={inputDesc}
-                  onChange={(e) => setInputDesc(e.target.value)}
-                  label="Enter Description"
-                  variant="outlined"
-                  fullWidth="true"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  onClick={addBookmarkSubmit}
-                  variant="contained"
-                  color="primary"
-                  fullWidth="true"
-                >
-                  Add Bookmark
-                </Button>
-              </Grid>
-            </Grid>
-          </>
+          <InputData
+            inputUrl={inputUrl}
+            inputDesc={inputDesc}
+            setInputUrl={setInputUrl}
+            setInputDesc={setInputDesc}
+            addBookmarkSubmit={addBookmarkSubmit}
+          />
         </Typography>
       </Container>
     </>
