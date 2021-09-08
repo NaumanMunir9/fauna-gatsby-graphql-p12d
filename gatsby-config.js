@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-apollo",
       options: {
-        uri: "http://localhost:8888/.netlify/functions/bookmarks",
+        uri: "https://mnm-p12d.netlify.app/",
       },
     },
     `gatsby-plugin-material-ui`,
