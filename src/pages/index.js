@@ -2,18 +2,12 @@
 import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import gql from "graphql-tag";
-import {
-  CssBaseline,
-  Container,
-  Typography,
-  Button,
-  Grid,
-  TextField,
-} from "@material-ui/core";
+import { CssBaseline, Container, Typography } from "@material-ui/core";
 
 // styles
 import "./index.css";
 import InputData from "../components/InputData";
+import BookmarkData from "../components/BookmarkData";
 
 const BookmarkQuery = gql`
   query {
@@ -62,13 +56,7 @@ export default function Home() {
       <Container maxWidth="md">
         <Typography component="div" style={{ backgroundColor: "#f5f5f5" }}>
           <div>
-            {data &&
-              data.bookmark.map((item) => (
-                <div key={item.id}>
-                  <h2>{item.url}</h2>
-                  <h2>{item.desc}</h2>
-                </div>
-              ))}
+            <BookmarkData data={data} />
           </div>
 
           <InputData
