@@ -4,7 +4,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 
 const BookmarkQuery = gql`
-  {
+  query {
     bookmark {
       id
       url
@@ -44,9 +44,19 @@ export default function Home() {
   if (loading) return <h3>Loading...</h3>;
   if (error) return <h3>{`Error: ${error.message}`}</h3>;
 
+  console.log(data.bookmark);
+
   return (
     <div>
-      <p>{JSON.stringify(data)}</p>
+      <div>
+        {data &&
+          data.bookmark.map((item) => (
+            <div key={item.id}>
+              <h2>{item.url}</h2>
+              <h2>{item.desc}</h2>
+            </div>
+          ))}
+      </div>
 
       <div>
         <div>
