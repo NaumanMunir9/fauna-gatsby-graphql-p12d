@@ -3,11 +3,9 @@ import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import { Container, Typography } from "@material-ui/core";
-
 // components
 import BookmarkData from "../components/BookmarkData";
 import InputForm from "../components/InputForm";
-
 // styles
 import "./index.css";
 
